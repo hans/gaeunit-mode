@@ -7,10 +7,11 @@
 (defun gaeunit-run-tests ()
   (interactive)
   (call-process "gaeunit" nil "*gaeunit*" nil)
-  (save-current-buffer
+  (let ((old-buffer (buffer-name)))
     (switch-to-buffer "*gaeunit*" t)
 
     (let ((buffer-contents (buffer-string)))
+      (switch-to-buffer old-buffer)
       (run-hooks
        (if (string-match-p "^OK$" buffer-contents)
           'gaeunit-tests-success-hook
