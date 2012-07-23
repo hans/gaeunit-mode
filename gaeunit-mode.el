@@ -24,3 +24,5 @@
   nil
   "GAEUnit"
   gaeunit-mode-map)
+
+(provide 'gaeunit-mode)
